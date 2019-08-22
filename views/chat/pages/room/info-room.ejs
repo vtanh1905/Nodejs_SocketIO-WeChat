@@ -1,0 +1,18 @@
+<div class="box box-widget widget-user-2">
+    <!-- Add the bg color to the header using any of the bg-* classes -->
+    <div class="widget-user-header bg-light-blue">
+        <div class="widget-user-image">
+            <img class="img-circle" src="images/rooms/<%= infoRoom.thumbnail %>" alt="User Avatar">
+        </div>
+        <!-- /.widget-user-image -->
+        <h3 class="widget-user-username"><%= infoRoom.name %></h3>
+
+    </div>
+    <div class="box-footer no-padding">
+        <ul class="nav nav-stacked">
+            <li><a href="#">Members <span class="pull-right badge bg-blue" id="countMemeberOnline">0</span></a></li>
+            <li><a href="#">Language <span class="pull-right badge bg-aqua"><%= infoRoom.language %></span></a></li>
+            <li><a href="#">Category<span class="pull-right badge bg-green">Education</span></a></li>
+        </ul>
+    </div>
+</div>

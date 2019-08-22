@@ -1,0 +1,18 @@
+<section class="content">
+    <div class="col-md-4">
+        <div class="row">
+            <% include ./info-room %>
+        </div>
+        <div class="row">
+            <% include ./user-online %>
+        </div>
+    </div>
+    <div class="col-md-8 no-padding-right">
+       <% include ./box-chat %>
+    </div>
+</section>
+<input type="hidden" name="roomID" value="<%= infoRoom._id %>">
+<input type="hidden" name="username" value="<%= user.username %>">
+<input type="hidden"  name="avatar" value="<%= user.avatar %>">
+<input type="hidden" name="prefix" value="<%= prefix %>">
+<script src="js/socket/socket-chat-room.js"></script>

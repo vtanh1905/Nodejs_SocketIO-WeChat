@@ -1,0 +1,81 @@
+<% include ./../../helpers/selectBoxGroup %>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Form
+            </div>
+            <div class="panel-body">
+            <%if (errors) { %>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                            <% errors.forEach(function(value, index) { %>
+                                <li><%= value.msg %></li>
+                            <% }); %>
+                            </ul>
+                        </div>
+                    
+                    </div>
+                </div>
+            <% } %>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <form role="form" action="<%= systemConfig.prefixAdmin %>/rooms/form/save/"  enctype="multipart/form-data" method="POST" id="myForm">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input class="form-control" name="name" value="<%= item.name %>" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Ordering</label>
+                                <input class="form-control" type="number" name="ordering" value="<%= item.ordering %>" />
+                            </div>
+
+                            <!-- <div class="form-group"  id="boxInpuctForm">
+                                <img src="<%= item.thumbnail %>" alt="" class="img-responsive">
+                            </div> -->
+
+                            <div class="form-group"  id="boxInpuctForm">
+                                <label>Thumbnail</label>
+                                <input type="file" name="thumbnail" />
+                            </div>
+
+                             <div class="form-group">
+                                <label>Language</label>
+                                <input class="form-control" name="language" value="<%= item.language %>" />
+                            </div>
+          
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select name="status" class="form-control">
+                                    <option value="novalue" <%if (item.status === 'novalue') { %> selected <% } %>>Choose Status</option>
+                                    <option value="active" <%if (item.status === 'active') { %> selected <% } %>>Active</option>
+                                    <option value="inactive" <%if (item.status === 'inactive') { %> selected <% } %>>Inactive</option>
+                                </select>
+                            </div>
+
+                            <input class="form-control" name="id" value="<%= item._id %>" type="hidden" />
+
+                            <button type="submit" class="btn btn-primary">
+                                Submit
+                            </button>
+                            <a type="button" href="<%= systemConfig.prefixAdmin %>/rooms/" class="btn btn-default">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var myForm = document.getElementById("myForm");
+    var boxInpuctForm = document.getElementById("boxInpuctForm");
+    myForm.onsubmit = function(){
+        myForm.removeChild(boxInpuctForm);
+        myForm.appendChild(boxInpuctForm);
+    }
+</script>

@@ -1,0 +1,45 @@
+<% paginationHepler = (pagination, status, search) => { %>
+    <div class="panel panel-info" id="pagination">
+      <div class="panel-heading">
+        Pagination
+        <span>^</span>
+        <span class="label label-warning">Total pages: <%= pagination.totalPage %></span>
+        <span class="label label-danger">Total entries: <%= pagination.totalElement %></span>
+      </div>
+
+      <div class="panel-body">
+        <div class="infor-pagination">
+          <p>Number of elements on the page: <span><%= pagination.elementPerPage %></span></p>
+
+          <p>
+            Showing <span> <%= pagination.elementStart %> </span> to <span> <%= pagination.elementEnd %> </span> of <span> <%= pagination.currentPage %> </span> entries
+          </p>
+        </div>
+        
+
+        <div class="ad-pagination">
+          <ul class="pagination text-center">
+          <%if (pagination.totalPage != 1) { %>
+            <%if (pagination.currentPage != 1) { %>
+                <li class=""><a href="/<%= systemConfig.prefixAdmin %>/items<%if (status) { %>/<%= status %><% } %>?page=1<%if (search) { %>&search=<%= search %><% } %>">Start</a></li>
+                <li class=""><a href="/<%= systemConfig.prefixAdmin %>/items<%if (status) { %>/<%= status %><% } %>?page=<%= pagination.currentPage - 1 %><%if (search) { %>&search=<%= search %><% } %>">Previous</a></li>
+            <% } %>
+
+            <% for(var i = pagination.pageStart; i <= pagination.pageEnd; ++i) { %>
+                <%if (i == pagination.currentPage) { %>
+                    <li class="active"><a href="#"><%= i %></a></li>
+                <% } else { %>
+                    <li><a href="/<%= systemConfig.prefixAdmin %>/items<%if (status) { %>/<%= status %><% } %>?page=<%= i %><%if (search) { %>&search=<%= search %><% } %>"><%= i %></a></li>
+                <% } %>
+                
+            <% }; %>
+            <%if (pagination.currentPage != pagination.totalPage) { %>
+                <li class=""><a href="/<%= systemConfig.prefixAdmin %>/items<%if (status) { %>/<%= status %><% } %>?page=<%= pagination.currentPage + 1 %><%if (search) { %>&search=<%= search %><% } %>">Next</a></li>
+                <li class=""><a href="/<%= systemConfig.prefixAdmin %>/items<%if (status) { %>/<%= status %><% } %>?page=<%= pagination.totalPage %><%if (search) { %>&search=<%= search %><% } %>">End</a></li>
+            <% } %>
+          <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+<% } %>

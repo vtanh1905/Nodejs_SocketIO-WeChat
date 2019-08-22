@@ -1,0 +1,16 @@
+<% orderingHelper = (collection, name, nameField, nameFieldCurrent, typeOrderingCurrent) => { 
+    var order = '';
+    var typeOrdering = 'asc';
+    if(nameField === nameFieldCurrent){
+        if(typeOrderingCurrent === 'asc'){
+            order = '-desc';
+            typeOrdering = 'desc';
+        }else {
+            order = '-asc';
+            typeOrdering = 'asc';
+        }
+    }
+
+    return `<a href="${systemConfig.prefixAdmin}/${collection}/sort/${nameField}/${typeOrdering}" style="text-decoration: none"> ${name} <i class="fa fa-sort${order}" aria-hidden="true"></i> </a>`;
+}
+%>

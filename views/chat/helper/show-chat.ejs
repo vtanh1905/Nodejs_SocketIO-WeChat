@@ -1,0 +1,17 @@
+<% showChat = (list, username) => { %>
+    <% list.forEach(function(item, index) { %>
+        <div class="direct-chat-msg <%if (username === item.username) { %> right <% } %>">
+            <div class="direct-chat-info clearfix">
+                <span class="direct-chat-name pull-<%if (username === item.username) { %> right <% } else { %> left <% } %>"><%= item.username %></span>
+                <span class="direct-chat-timestamp pull-<%if (username === item.username) { %> left <% } else { %> right <% } %>"><%= moment(item.created).format(systemConfig.format_time_chat) %></span>
+            </div>
+            <!-- /.direct-chat-info -->
+            <img class="direct-chat-img" src="images/users/<%= item.avatar %>" alt="Message User Image">
+            <!-- /.direct-chat-img -->
+            <div class="direct-chat-text">
+                <%= item.content %>
+            </div>
+            <!-- /.direct-chat-text -->
+        </div>
+    <% }); %>
+<% } %>

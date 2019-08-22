@@ -1,0 +1,10 @@
+<% selectBoxGroupHelper = (items, valueSelected, functionOnchange) => { %>
+    <select name="group_id" id="group_id" class="form-control" onchange="<%= functionOnchange %>">
+        <option value="noid" <%if (valueSelected == undefined) { %> selected <% } %>>Choose Groups</option>
+        <% items.forEach(function(value, index) { %>
+        <option value="<%= value._id %>"  <%if (value._id == valueSelected) { %> selected <% } %> >
+            <%= value.name %>
+        </option>
+        <% }); %>
+    </select>
+<% } %>
