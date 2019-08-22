@@ -1,4 +1,4 @@
-# Nodejs_SocketIO : Project WebChat
+# NodeJS_SocketIO : Project WebChat
 Các tính năng trong Project:
   + Login / LogOut
   + Chat All
